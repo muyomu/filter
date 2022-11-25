@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb8210cc27746014efcea8625037bf54c
+class ComposerStaticInit3be1db1d862166a6b03aa550e2aa02b5
 {
     public static $prefixLengthsPsr4 = array (
         'm' => 
@@ -12,10 +12,6 @@ class ComposerStaticInitb8210cc27746014efcea8625037bf54c
             'muyomu\\router\\' => 14,
             'muyomu\\http\\' => 12,
             'muyomu\\database\\' => 16,
-        ),
-        'M' => 
-        array (
-            'Muyomu\\Filter\\' => 14,
         ),
     );
 
@@ -26,15 +22,11 @@ class ComposerStaticInitb8210cc27746014efcea8625037bf54c
         ),
         'muyomu\\http\\' => 
         array (
-            0 => __DIR__ . '/..' . '/muyomu/http/src',
+            0 => __DIR__ . '/../..' . '/src',
         ),
         'muyomu\\database\\' => 
         array (
             0 => __DIR__ . '/..' . '/muyomu/database/src',
-        ),
-        'Muyomu\\Filter\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
@@ -45,9 +37,9 @@ class ComposerStaticInitb8210cc27746014efcea8625037bf54c
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb8210cc27746014efcea8625037bf54c::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb8210cc27746014efcea8625037bf54c::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitb8210cc27746014efcea8625037bf54c::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3be1db1d862166a6b03aa550e2aa02b5::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3be1db1d862166a6b03aa550e2aa02b5::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit3be1db1d862166a6b03aa550e2aa02b5::$classMap;
 
         }, null, ClassLoader::class);
     }

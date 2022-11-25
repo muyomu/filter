@@ -2,6 +2,7 @@
 
 namespace muyomu\filter;
 
+use muyomu\filter\client\GenericFilter;
 use muyomu\http\client\GetClient;
 
 class FilterExecutor
@@ -18,7 +19,7 @@ class FilterExecutor
         }
     }
 
-    public function addFilter(GetClient $filter):void{
+    public function addFilter(GenericFilter $filter):void{
         $this->filterObjects[] = $filter;
     }
 

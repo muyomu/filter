@@ -1,6 +1,6 @@
 <?php
 
-namespace muyomu\http;
+namespace muyomu\http\utility;
 
 use muyomu\http\client\AttributeClient;
 

@@ -49,9 +49,11 @@ class DefaultHttpConfig extends GenericConfig
             502 => "HTTP/1.1 502 Bad Gateway",
             503 => "HTTP/1.1 503 Service Unavailable",
             504 => "HTTP/1.1 504 Gateway Time-out",
-            505 => "HTTP/1.1 504 MiddleWare Error"
+            505 => "HTTP/1.1 504 HTTP version not supported"
         ],
-        "response_header"=>[
+        "response_headers"=>[
+            "Cache-Control"=>"no-store",
+            "Connection"=>"close",
             "Content-Type"=>"text/json;charset=UTF-8"
         ]
     ];

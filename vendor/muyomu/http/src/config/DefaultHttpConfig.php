@@ -3,11 +3,13 @@
 namespace muyomu\http\config;
 
 use muyomu\config\annotation\Configuration;
-use muyomu\config\base\GenericConfig;
+use muyomu\config\GenericConfig;
 
 #[Configuration("config_http")]
 class DefaultHttpConfig extends GenericConfig
 {
+    protected string $configClass = self::class;
+
     protected array $configData = [
         "http_code"=>[
             100 => "HTTP/1.1 100 Continue",

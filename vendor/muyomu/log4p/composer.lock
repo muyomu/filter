@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "485f0d4f3a8ab7c58b1981c8fedad5c9",
+    "content-hash": "a4c210a6df027d3426d0620a7db6ca95",
     "packages": [
         {
             "name": "muyomu/config",
-            "version": "v1.0.8",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/muyomu/config.git",
-                "reference": "df3ed78e3ba1645d5b40ee1c956ee675cbc82c4c"
+                "reference": "1d665bf66646b3a3a7cf087315c41baf13a582c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/muyomu/config/zipball/df3ed78e3ba1645d5b40ee1c956ee675cbc82c4c",
-                "reference": "df3ed78e3ba1645d5b40ee1c956ee675cbc82c4c",
+                "url": "https://api.github.com/repos/muyomu/config/zipball/1d665bf66646b3a3a7cf087315c41baf13a582c6",
+                "reference": "1d665bf66646b3a3a7cf087315c41baf13a582c6",
                 "shasum": ""
             },
             "type": "library",
@@ -33,15 +33,15 @@
             "authors": [
                 {
                     "name": "mutian",
-                    "email": "bhfqlz@outlook.com"
+                    "email": "mutian-xiangcai@outlook.com"
                 }
             ],
             "description": "The config framework for muyomu web framework",
             "support": {
                 "issues": "https://github.com/muyomu/config/issues",
-                "source": "https://github.com/muyomu/config/tree/v1.0.8"
+                "source": "https://github.com/muyomu/config/tree/v1.1.0"
             },
-            "time": "2022-11-26T12:51:37+00:00"
+            "time": "2022-11-27T01:04:33+00:00"
         }
     ],
     "packages-dev": [],

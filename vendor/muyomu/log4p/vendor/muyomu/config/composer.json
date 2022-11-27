@@ -11,9 +11,8 @@
     "authors": [
         {
             "name": "mutian",
-            "email": "bhfqlz@outlook.com"
+            "email": "mutian-xiangcai@outlook.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {}
+    "minimum-stability": "stable"
 }

@@ -1,19 +1,14 @@
 <?php
 
-namespace muyomu\config;
+namespace muyomu\config\utility;
 
 use muyomu\config\annotation\Configuration;
-use muyomu\config\utility\ConfigUtility;
 use ReflectionClass;
 use ReflectionException;
 
 class ConfigParser
 {
-    /**
-     * @var ConfigUtility
-     */
     private ConfigUtility $utility;
-
 
     public function __construct()
     {
@@ -25,14 +20,18 @@ class ConfigParser
      * @return array
      */
     public function getConfigData(string $configClassName):array{
+
         $reflectionClass = $this->utility->getConfigClassInstance($configClassName);
+
         $attribute = $this->utility->getAttributeClassInstance($reflectionClass,Configuration::class);
+
         $configField = $attribute->newInstance()->getConfigField();
+
         if ($this->checkForField($configField)){
-            $defaultData = $this->getDefaultConfigData($configClassName);
+            $defaultData = $this->getDefaultConfigData($reflectionClass);
             return $this->resolveConfigData($GLOBALS[$configField], $defaultData);
         }else{
-            return $this->getDefaultConfigData($configClassName);
+            return $this->getDefaultConfigData($reflectionClass);
         }
     }
 
@@ -58,34 +57,43 @@ class ConfigParser
         foreach ($keys as $key){
             if (is_array($defaultData[$key])){
                 if ($this->checkForAssocArray($defaultData[$key])){
-                    $this->resolveConfigData($fieldData[$key],$defaultData[$key]);
+                    if (isset($fieldData[$key])){
+                        $this->resolveConfigData($fieldData[$key],$defaultData[$key]);
+                    }
                 }else{
-                    if ((gettype($fieldData[$key]) == gettype($defaultData[$key])) && isset($fieldData[$key])){
-                        $defaultData[$key] = $fieldData[$key];
+                    if (isset($fieldData[$key])){
+                        if (gettype($fieldData[$key]) == gettype($defaultData[$key])){
+                            $defaultData[$key] = $fieldData[$key];
+                        }
                     }
                 }
             }else{
-                if ((gettype($fieldData[$key]) == gettype($defaultData[$key])) && isset($fieldData[$key])){
-                    $defaultData[$key] = $fieldData[$key];
+                if (isset($fieldData[$key])){
+                    if (gettype($fieldData[$key]) == gettype($defaultData[$key])){
+                        $defaultData[$key] = $fieldData[$key];
+                    }
                 }
             }
         }
         return $defaultData;
     }
 
+
     /**
-     * @param string $className
+     * @param ReflectionClass $class
      * @return array
      */
-    private function getDefaultConfigData(string $className):array{
-        $configData = array();
-        try {
-            $reflectionClass = new ReflectionClass($className);
-            $reflectionMethod = $reflectionClass->getMethod("getConfigData");
-            $reflectionClassInstance = $reflectionClass->newInstance();
-            $configData = $reflectionMethod->invoke($reflectionClassInstance);
-        }catch (ReflectionException $exception){
+    private function getDefaultConfigData(ReflectionClass $class):array{
 
+        try {
+            $reflectionProperty = $class->getProperty("configData");
+
+            $reflectionClassInstance = $class->newInstance();
+
+            $configData = $reflectionProperty->getValue($reflectionClassInstance);
+
+        }catch (ReflectionException $exception){
+            return array();
         }
         return $configData;
     }
@@ -94,16 +102,16 @@ class ConfigParser
      * @param array $item
      * @return bool
      */
-    private function checkForAssocArray(array $item):bool{
+    public function checkForAssocArray(array $item):bool{
         $index = 0;
         $keys = array_keys($item);
         foreach ($keys as $key){
             if ($index == $key){
                 $index++;
             }else{
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 }
